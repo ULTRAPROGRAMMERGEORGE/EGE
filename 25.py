@@ -1,11 +1,13 @@
-from fnmatch import *
-from math import log
-def f(x):
-    d = set()
-    for i in range(1,int(x**0.5)+1):
-        if x % i ==0:
-            d |= {i,x//i}
-    return log(len(d),2) == int(log(len(d),2))
-for x in range(0, 10**9+1, 2031*31):
-    if fnmatch(str(x), '*31*65?'):
-        print(x,x//2031)
+max_count = 0
+number = -1
+for n in range(84052, 84130):
+    count = 0
+    for i in range(1, int(n ** 0.5)):
+        if n % i == 0:
+            count += 1
+            if n % i != i:
+                count += 1
+    if max_count < count:
+        max_count = count
+        number = n
+print(number, max_count)
